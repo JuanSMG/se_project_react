@@ -1,0 +1,38 @@
+.card {
+    width: 323px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.card__name {
+    position: absolute;
+    top: 15px;
+    margin: 0;
+    /* top: 295px;
+    left: 166px; */
+    border-radius: 4px;
+    padding: 2px 12px;
+    gap: 8px;
+    background-color: #fff;
+    font-family: Cabinet Grotesk, General Sans, Inter;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #00000099;
+}
+
+.card__image {
+    width: 100%;
+    border: 1px solid #0000004D;
+    border-radius: 19px;
+}
+
+.cards__text {
+    font-family: Cabinet Grotesk, General Sans, Inter;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    margin-top: 40px;
+    margin-bottom: 34px;
+}

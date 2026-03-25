@@ -1,18 +1,17 @@
 import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-import { defaultClothingItems } from "../../utils/constants";
 
-function Main({ weatherData, handleCardClick, roundedTemp }) {
+function Main({ weatherData, clothingItems, handleCardClick, roundedTemp }) {
     return ( 
     <main>
-        <WeatherCard weatherData = {weatherData} roundedTemp={roundedTemp} />
+        <WeatherCard weatherData={weatherData} roundedTemp={roundedTemp} />
         <section className="cards">
             <p className="cards__text">
                 Today is {roundedTemp}&deg; F / You may want to wear:
             </p>
             <ul className="cards__list">
-                {defaultClothingItems
+                {clothingItems
                  .filter((item) => {
                      return item.weather === weatherData.type;
                  })

@@ -1,14 +1,40 @@
 .modal__footer {
-  margin: 20px 0 32px 32px;
-  display: flex;
+  margin: 20px 32px 32px 32px;
+  display: grid;
   flex-direction: column;
   gap: 12px;
 }
 
 .modal__caption {
   margin: 0;
+  font-family: Cabinet Grotesk;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 .modal__weather {
   margin: 0;
+  grid-row: 2;
+  font-family: Cabinet Grotesk;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.modal__delete-btn {
+  justify-self: flex-end;
+  align-self: flex-end;
+  grid-column: 3;
+  grid-row: 1;
+  border: none;
+  background: none;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ff4d00;
+}
+
+.modal__delete-btn:hover {
+  opacity: 0.5;
 }

@@ -9,7 +9,6 @@ function ModalWithForm({
   onCloseBtn,
   children,
   onSubmit,
-  disableButton,
 }) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""} modal_type_${name}`}>

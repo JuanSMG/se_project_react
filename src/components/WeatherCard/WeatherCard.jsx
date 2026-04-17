@@ -22,7 +22,9 @@ function WeatherCard({ weatherData, roundedWeatherTemp }) {
 
   return (
     <section className="weather-card">
-      <p className="weather-card_temp">{roundedWeatherTemp}&deg;{currentTemperatureUnit}</p>
+      <p className="weather-card_temp">
+        {roundedWeatherTemp}&deg;{currentTemperatureUnit}
+      </p>
       <img
         src={weatherOption?.url}
         alt={`Image of ${weatherOption?.day ? "day" : "night"}time 

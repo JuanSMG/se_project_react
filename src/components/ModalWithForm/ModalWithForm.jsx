@@ -19,7 +19,7 @@ function ModalWithForm({
             src={closeBtn}
             alt="close button"
             className="modal__close-image modal__close-image_form"
-            typeof="button"
+            type="button"
           />
         </button>
         <form onSubmit={onSubmit} className="modal__form" name={name}>

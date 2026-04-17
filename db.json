@@ -67,16 +67,16 @@
       "_id": 19
     },
     {
-      "name": "asdf",
-      "imageUrl": "https://burst.shopifycdn.com/photos/blue-t-shirt.jpg?width=1000&format=pjpg&exif=0&iptc=0",
-      "weather": "hot",
-      "_id": 20
-    },
-    {
       "name": "Blazer",
       "imageUrl": "https://static.vecteezy.com/system/resources/previews/072/881/537/non_2x/blazer-clothing-item-isolated-on-transparent-background-free-png.png",
       "weather": "warm",
       "_id": 21
+    },
+    {
+      "name": "Shorts",
+      "imageUrl": "https://png.pngtree.com/png-vector/20240123/ourmid/pngtree-new-green-shorts-png-image_11463296.png",
+      "weather": "hot",
+      "_id": 22
     }
   ]
 }

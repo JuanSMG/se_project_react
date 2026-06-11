@@ -11,21 +11,23 @@ export const handleServerResponse = (res) => {
 export const getItems = () =>
   fetch(`${baseUrl}/items`, { headers }).then(handleServerResponse);
 
-export const addItem = ({ name, imageUrl, weather }) => {
+export const addItem = (item, token) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers,
-    body: JSON.stringify({
-      name,
-      imageUrl,
-      weather,
-    }),
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(item),
   }).then(handleServerResponse);
 };
 
-export const deleteItem = (itemId) => {
+export const deleteItem = (itemId, token) => {
   return fetch(`${baseUrl}/items/${itemId}`, {
     method: "DELETE",
-    headers,
+    headers: {
+      ...headers,
+      authorization: `Bearer ${token}`,
+    },
   }).then(handleServerResponse);
 };

@@ -1,16 +1,24 @@
 import "./Profile.css";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import Sidebar from "../SideBar/SideBar";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 export default function Profile({
   clothingItems,
   handleCardClick,
   handleAddBtnClick,
   isOwn,
+  editProfileClick,
+  logOutClick,
+  setLoggedIn,
 }) {
   return (
     <section className="profile">
-      <Sidebar />
+      <Sidebar
+        editProfileClick={editProfileClick}
+        logOut={logOutClick}
+        setLoggedIn={setLoggedIn}
+      />
       <ClothesSection
         clothingItems={clothingItems}
         handleCardClick={handleCardClick}

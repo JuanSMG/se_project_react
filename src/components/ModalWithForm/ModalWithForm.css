@@ -35,7 +35,7 @@
   width: 16px;
   height: 16px;
   cursor: pointer;
-  outline:color(from color srgb r g b);
+  outline: color(from color srgb r g b);
   background-color: transparent;
 }
 
@@ -83,6 +83,8 @@
   box-sizing: border-box;
   width: 100%;
   height: 498px;
+  overflow: hidden;
+  object-fit: contain;
 }
 
 .modal__form {
@@ -118,10 +120,8 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked + span {
-   color: #000;
+  color: #000;
 }
-
-
 
 .modal__legend {
   margin-bottom: 12px;
@@ -139,7 +139,7 @@ input[type="radio"]:checked + span {
   cursor: pointer;
 }
 
-.modal__submitbtn {
+.modal__submitbtn[type="submit"] {
   margin-top: 32px;
   width: 92px;
   height: 20px;
@@ -151,8 +151,47 @@ input[type="radio"]:checked + span {
   color: #fff;
   border-radius: 4px;
   cursor: pointer;
+  white-space: nowrap;
+}
+
+.modal__submitbtn[type="submit"].active {
+  background-color: #000;
+  cursor: pointer;
+  opacity: 1;
 }
 
 .modal__submitbtn:hover {
   background-color: #00000099;
+}
+
+.modal__register_login-btn {
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;
+  color: #00000080;
+  background-color: transparent;
+  position: absolute;
+  padding: 0;
+  margin-left: 8px;
+  top: 402px;
+  left: 155px;
+}
+
+.modal__login_register-btn {
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;
+  color: #00000080;
+  background-color: transparent;
+  position: absolute;
+  padding: 0;
+  margin-left: 8px;
+  top: 257px;
+  left: 155px;
 }

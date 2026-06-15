@@ -6,6 +6,7 @@
   font-size: 20px;
   line-height: 100%;
   gap: 16px;
+  position: relative;
 }
 
 .sideBar__username {
@@ -19,4 +20,28 @@
   border-radius: 50%;
   border: 1px;
   border-color: #00000080;
+}
+
+.sideBar__edit-profile-btn {
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  border: none;
+  position: absolute;
+  top: 199px;
+}
+
+.side__logout-btn {
+  font-family: Cabinet Grotesk;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  border: none;
+  position: absolute;
+  top: 232px;
 }

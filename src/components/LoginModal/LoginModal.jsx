@@ -52,8 +52,8 @@ const Login = ({ isOpen, onLogin, onCloseBtn, onSignupClick }) => {
           onChange={handleChange}
         />
       </label>
-      <div className="login__signin">
-        <button onClick={onSignupClick} className="login__register-btn">
+      <div className="modal__login_signin">
+        <button onClick={onSignupClick} className="modal__login_register-btn">
           or Register
         </button>
       </div>

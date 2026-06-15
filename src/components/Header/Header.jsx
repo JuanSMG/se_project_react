@@ -65,9 +65,9 @@ function Header({
         <div className="header__user-container">
           <p className="header__username">{user.name}</p>
           <img
-            src={user.avatar || avatar}
+            src={user.avatar || ""}
             alt={userInitial}
-            className="header__avatar"
+            className={loggedIn ? "header__avatar" : ""}
           />
         </div>
       </NavLink>

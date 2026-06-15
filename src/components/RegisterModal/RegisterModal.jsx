@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -80,8 +79,8 @@ const Register = ({ isOpen, onSignUp, onCloseBtn, onLoginClick }) => {
           onChange={handleChange}
         />
       </label>
-      <div className="register__signin">
-        <button onClick={onLoginClick} className="register__login-btn">
+      <div className="modal__register_signin">
+        <button onClick={onLoginClick} className="modal__register_login-btn">
           or Log in
         </button>
       </div>

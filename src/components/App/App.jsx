@@ -4,6 +4,7 @@ import * as auth from "../../utils/auth";
 import { getToken } from "../../utils/token";
 import * as api from "../../utils/api";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useNavigate } from "react-router-dom";
 
 import "./App.css";
 import Header from "../Header/Header";
@@ -14,6 +15,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import Register from "../RegisterModal/RegisterModal";
 import Login from "../LoginModal/LoginModal";
 import Profile from "../Profile/Profile";
+import EditProfile from "../EditProfileModal/EditProfileModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, apiKey } from "../../utils/constants";
@@ -33,12 +35,14 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState(getToken());
+  const [isLiked, setIsLiked] = useState(false);
 
-  const [activeModal, setActiveModal] = useState("log-in");
+  const [activeModal, setActiveModal] = useState({});
   const [selectedCard, setSelectedCard] = useState({});
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
+  const navigate = useNavigate;
 
   useEffect(() => {
     getItems();
@@ -71,6 +75,10 @@ function App() {
 
   const handleAddBtnClick = () => {
     setActiveModal("add-garment");
+  };
+
+  const editProfileClick = () => {
+    setActiveModal("edit-profile");
   };
 
   const isOwn = selectedCard.owner === currentUser._id;
@@ -173,6 +181,51 @@ function App() {
       .catch(console.error);
   };
 
+  const handleEditProfile = ({ name, avatar }) => {
+    api
+      .UpdateUserData({ name, avatar }, token)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  const handleCardLike = (_id, isLiked) => {
+    const token = getToken();
+
+    !isLiked
+      ? api
+          .addCardLike(_id, token)
+          .then((updatedCard) => {
+            const card = updatedCard?.data || updatedCard;
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === _id ? card : item)),
+            );
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      : api
+          .removeCardLike(_id, token)
+          .then((updatedCard) => {
+            const card = updatedCard?.data || updatedCard;
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === _id ? card : item)),
+            );
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+  };
+
+  const handlelogOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    setCurrentUser("");
+    navigate("/login");
+  };
+
   return (
     <CurrentTemperatureUnitContext.Provider
       value={{ currentTemperatureUnit, handleToggleSwitchChange }}
@@ -196,6 +249,7 @@ function App() {
                     handleCardClick={handleCardClick}
                     roundedWeatherTemp={roundedWeatherTemp}
                     isLoggedIn={isLoggedIn}
+                    onCardLike={handleCardLike}
                   />
                 }
               />
@@ -209,6 +263,9 @@ function App() {
                       handleAddBtnClick={handleAddBtnClick}
                       isLoggedIn={isLoggedIn}
                       isOwn={isOwn}
+                      editProfileClick={editProfileClick}
+                      logOutClick={handlelogOut}
+                      setIsLoggedIn={setIsLoggedIn}
                     />
                   </ProtectedRoute>
                 }
@@ -240,6 +297,12 @@ function App() {
             onLogin={handleLogin}
             onCloseBtn={closeActiveModal}
             onSignupClick={handleSignupClick}
+          />
+          <EditProfile
+            isOpen={activeModal === "edit-profile"}
+            onEditProfile={handleEditProfile}
+            onCloseBtn={closeActiveModal}
+            editProfileClick={editProfileClick}
           />
         </div>
       </CurrentUserContext.Provider>

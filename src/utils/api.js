@@ -32,17 +32,6 @@ export const deleteItem = (itemId, token) => {
   }).then(handleServerResponse);
 };
 
-export const UpdateUserData = (data, token) => {
-  return fetch(`${baseUrl}/users/me`, {
-    method: "PATCH",
-    headers: {
-      ...headers,
-      authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(data),
-  }).then(handleServerResponse);
-};
-
 export const addCardLike = (_id, token) => {
   return fetch(`${baseUrl}/items/${_id}/likes`, {
     method: "PUT",

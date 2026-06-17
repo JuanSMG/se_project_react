@@ -5,7 +5,6 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 import "./Header.css";
 import logo from "../../assets/logo.svg";
-import avatar from "../../assets/Avatar.svg";
 
 function Header({
   handleAddBtnClick,

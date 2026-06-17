@@ -1,5 +1,4 @@
 import React from "react";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./ItemModal.css";
 import closeBtn from "../../assets/close-btn.png";
 

@@ -1,6 +1,5 @@
 import "./ItemCard.css";
 import { useContext } from "react";
-import Heart from "../../assets/Heart.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ItemCard({ item, onCardClick, onCardLike, isLoggedIn }) {

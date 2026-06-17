@@ -1,7 +1,6 @@
 import "./Profile.css";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import Sidebar from "../SideBar/SideBar";
-import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 export default function Profile({
   clothingItems,

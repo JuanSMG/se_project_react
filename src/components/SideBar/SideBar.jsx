@@ -1,14 +1,10 @@
 import "./SideBar.css";
 import avatar from "../../assets/Avatar.svg";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { useNavigate } from "react-router-dom";
-import { removeToken } from "../../utils/token";
 
 export default function Sidebar({ editProfileClick, logOut, setLoggedIn }) {
   const user = useContext(CurrentUserContext);
-
-  const navigate = useNavigate();
 
   const userInitial = user.name ? user.name[0].toUpperCase() : "";
 
@@ -16,7 +12,11 @@ export default function Sidebar({ editProfileClick, logOut, setLoggedIn }) {
     <aside className="sidebar">
       <div className="sideBar__profile-container">
         <p className="sideBar__username">{user.name}</p>
-        <img src={user.avatar} alt={userInitial} className="sideBar__avatar" />
+        <img
+          src={user.avatar || avatar}
+          alt={userInitial}
+          className="sideBar__avatar"
+        />
       </div>
       <div className="sideBar__Profile-control">
         <button

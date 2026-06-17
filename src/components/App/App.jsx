@@ -42,7 +42,7 @@ function App() {
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   useEffect(() => {
     getItems();
@@ -95,6 +95,9 @@ function App() {
         closeActiveModal();
         return auth.getUserContent(data.token);
       })
+      .then((currentUser) => {
+        setCurrentUser(currentUser);
+      })
       .catch((err) => {
         const errorMessage = err.message || "Registration failed";
         console.error("Registration error:", err);
@@ -108,13 +111,16 @@ function App() {
     auth
       .authorize({ email, password })
       .then((res) => {
-        console.log(res);
-        if (res.token) {
-          localStorage.setItem("jwt", res.token);
+        localStorage.setItem("jwt", res.token);
+        setToken(res.token);
+        auth.getUserContent(res.token).then((currentUser) => {
           setCurrentUser(currentUser);
           setIsLoggedIn(true);
-          closeActiveModal();
-        }
+        });
+        return res;
+      })
+      .then(() => {
+        closeActiveModal();
       })
       .catch(console.error);
   };
@@ -182,8 +188,8 @@ function App() {
   };
 
   const handleEditProfile = ({ name, avatar }) => {
-    api
-      .UpdateUserData({ name, avatar }, token)
+    auth
+      .updateUserData({ name, avatar }, token)
       .then((updatedUser) => {
         setCurrentUser(updatedUser);
         closeActiveModal();
@@ -203,6 +209,9 @@ function App() {
               cards.map((item) => (item._id === _id ? card : item)),
             );
           })
+          .then(() => {
+            setIsLiked(true);
+          })
           .catch((err) => {
             console.log(err);
           })
@@ -213,17 +222,18 @@ function App() {
             setClothingItems((cards) =>
               cards.map((item) => (item._id === _id ? card : item)),
             );
+            setIsLiked(false);
           })
           .catch((err) => {
             console.log(err);
           });
   };
 
-  const handlelogOut = () => {
+  const handleLogOut = () => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
-    setCurrentUser("");
-    navigate("/login");
+    setCurrentUser({});
+    navigate("/");
   };
 
   return (
@@ -264,7 +274,7 @@ function App() {
                       isLoggedIn={isLoggedIn}
                       isOwn={isOwn}
                       editProfileClick={editProfileClick}
-                      logOutClick={handlelogOut}
+                      logOutClick={handleLogOut}
                       setIsLoggedIn={setIsLoggedIn}
                     />
                   </ProtectedRoute>

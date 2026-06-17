@@ -25,36 +25,36 @@ const Register = ({ isOpen, onSignUp, onCloseBtn, onLoginClick }) => {
       onCloseBtn={onCloseBtn}
       onSubmit={handleSubmit}
     >
-      <label className="modal__label">
+      <label htmlFor="register-email" className="modal__label">
         Email*
         <input
           type="email"
           name="email"
           className="modal__input"
-          id="email"
+          id="register-email"
           placeholder="Email"
           required
           value={values.email}
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="register-password" className="modal__label">
         Password*
         <input
           type="password"
           name="password"
           className="modal__input"
-          id="password"
+          id="register-password"
           placeholder="Password"
           required
           value={values.password}
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="register-name" className="modal__label">
         Name*
         <input
-          id="name"
+          id="register-name"
           type="text"
           placeholder="Name"
           required
@@ -66,10 +66,10 @@ const Register = ({ isOpen, onSignUp, onCloseBtn, onLoginClick }) => {
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="avatarUrl" className="modal__label">
+      <label htmlFor="register-avatarUrl" className="modal__label">
         Avatar URL*
         <input
-          id="avatarUrl"
+          id="register-avatarUrl"
           type="url"
           required
           placeholder="Avatar URL"

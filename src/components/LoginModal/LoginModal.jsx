@@ -7,12 +7,11 @@ const Login = ({ isOpen, onLogin, onCloseBtn, onSignupClick }) => {
     email: "",
     password: "",
   };
-  const { values, handleChange, handleReset } = useForm(defaultValues);
+  const { values, handleChange } = useForm(defaultValues);
 
   function handleSubmit(evt) {
     evt.preventDefault();
     onLogin(values);
-    handleReset(evt);
   }
 
   return (
@@ -24,31 +23,31 @@ const Login = ({ isOpen, onLogin, onCloseBtn, onSignupClick }) => {
       onCloseBtn={onCloseBtn}
       onSubmit={handleSubmit}
     >
-      <label className="modal__label">
+      <label htmlFor="login-email" className="modal__label">
         Email
         <input
           type="email"
           name="email"
           className="modal__input"
-          id="email"
+          id="login-email"
           placeholder="Email"
           required
           minLength="1"
           maxLength="30"
-          value={values.name}
+          value={values.email}
           onChange={handleChange}
         />
       </label>
-      <label htmlFor="imageURL" className="modal__label">
+      <label htmlFor="login-password" className="modal__label">
         Password
         <input
           type="password"
           name="password"
           className="modal__input"
-          id="password"
+          id="login-password"
           placeholder="Password"
           required
-          value={values.imageUrl}
+          value={values.password}
           onChange={handleChange}
         />
       </label>

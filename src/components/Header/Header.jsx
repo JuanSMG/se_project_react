@@ -29,8 +29,8 @@ function Header({
     }
   }, [user.name]);
 
-  const userInitial = user.name ? user.name[0].toUpperCase() : "";
-
+  const userInitial = user.name?.charAt(0).toUpperCase();
+  console.log(user);
   return (
     <header className="header">
       <NavLink to="/">
@@ -63,11 +63,17 @@ function Header({
       <NavLink className="header__nav-link" to="/profile">
         <div className="header__user-container">
           <p className="header__username">{user.name}</p>
-          <img
-            src={user.avatar || ""}
-            alt={userInitial}
-            className={loggedIn ? "header__avatar" : ""}
-          />
+          {user.avatar ? (
+            <img
+              src={user.avatar || ""}
+              alt="Users avatar"
+              className={loggedIn ? "header__avatar" : ""}
+            />
+          ) : (
+            <div className={loggedIn ? "header__avatar-placeholder" : ""}>
+              {userInitial}
+            </div>
+          )}
         </div>
       </NavLink>
     </header>

@@ -67,7 +67,6 @@ const EditProfile = ({
         <input
           id="edit-profile-avatar"
           type="url"
-          required
           placeholder="Avatar URL"
           className="modal__input"
           name="avatar"

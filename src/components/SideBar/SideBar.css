@@ -22,6 +22,19 @@
   border-color: #00000080;
 }
 
+.sideBar__avatar-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ccc;
+  color: #fff;
+  text-transform: uppercase;
+  margin-left: 5px;
+}
+
 .sideBar__edit-profile-btn {
   font-family: Cabinet Grotesk;
   font-weight: 700;

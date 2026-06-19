@@ -45,15 +45,15 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    getItems();
-    setToken(token);
-    auth
-      .getUserContent(token)
-      .then((currentUser) => {
-        setCurrentUser(currentUser);
-        setIsLoggedIn(true);
-      })
-      .catch(console.error);
+    if (token) {
+      auth
+        .getUserContent(token)
+        .then((currentUser) => {
+          setCurrentUser(currentUser);
+          setIsLoggedIn(true);
+        })
+        .catch(console.error);
+    }
   }, []);
 
   const handleSignupClick = () => {
@@ -276,6 +276,7 @@ function App() {
                       editProfileClick={editProfileClick}
                       logOutClick={handleLogOut}
                       setIsLoggedIn={setIsLoggedIn}
+                      onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }

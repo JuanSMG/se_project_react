@@ -1,5 +1,6 @@
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useEffect } from "react";
 
 const Register = ({ isOpen, onSignUp, onCloseBtn, onLoginClick }) => {
   const defaultValues = {
@@ -15,6 +16,12 @@ const Register = ({ isOpen, onSignUp, onCloseBtn, onLoginClick }) => {
     onSignUp(values);
     handleReset(evt);
   }
+
+  useEffect(() => {
+    if (isOpen) {
+      handleReset();
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm
@@ -80,7 +87,11 @@ const Register = ({ isOpen, onSignUp, onCloseBtn, onLoginClick }) => {
         />
       </label>
       <div className="modal__register_signin">
-        <button onClick={onLoginClick} className="modal__register_login-btn">
+        <button
+          onClick={onLoginClick}
+          type="button"
+          className="modal__register_login-btn"
+        >
           or Log in
         </button>
       </div>

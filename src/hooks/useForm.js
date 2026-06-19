@@ -9,7 +9,6 @@ export function useForm(defaultValues) {
   }
 
   const handleReset = (evt) => {
-    evt.preventDefault();
     setValues(defaultValues);
   };
 

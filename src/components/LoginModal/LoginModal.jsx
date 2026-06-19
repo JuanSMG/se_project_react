@@ -1,18 +1,25 @@
 import { Link } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useEffect } from "react";
 
 const Login = ({ isOpen, onLogin, onCloseBtn, onSignupClick }) => {
   const defaultValues = {
     email: "",
     password: "",
   };
-  const { values, handleChange } = useForm(defaultValues);
+  const { values, handleChange, handleReset } = useForm(defaultValues);
 
   function handleSubmit(evt) {
     evt.preventDefault();
     onLogin(values);
   }
+
+  useEffect(() => {
+    if (isOpen) {
+      handleReset();
+    }
+  }, [isOpen]);
 
   return (
     <ModalWithForm
@@ -52,7 +59,11 @@ const Login = ({ isOpen, onLogin, onCloseBtn, onSignupClick }) => {
         />
       </label>
       <div className="modal__login_signin">
-        <button onClick={onSignupClick} className="modal__login_register-btn">
+        <button
+          onClick={onSignupClick}
+          type="button"
+          className="modal__login_register-btn"
+        >
           or Register
         </button>
       </div>
